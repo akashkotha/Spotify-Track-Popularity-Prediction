@@ -8,14 +8,14 @@ End-to-end predictive analytics project (KDD process) that predicts a track's Sp
 Supervised **regression**: given a track's characteristics, estimate its `popularity`. Primary metric: RMSE (also MAE and R²), compared against a predict-the-mean baseline.
 
 ## Datasets (2)
-Both come from the Kaggle dataset **Spotify Dataset 1921–2020, 600k+ Tracks** (`yamaerenay/spotify-dataset-19212020-600k-tracks`):
+Both come from the Kaggle dataset **Spotify Dataset 1921–2020, 600k+ Tracks** (`yamaerenay/spotify-dataset-19212020-600k-tracks`). Full copies are included under `data/` and stored with Git LFS:
 
 | File | Content | Size |
 |------|---------|------|
-| `tracks.csv` | ~600k tracks: popularity, audio features, release date, artist IDs | ~600k rows |
-| `artists.csv` | Artist followers, genres, artist popularity | ~1.1M rows |
+| `data/tracks.csv` | ~600k tracks: popularity, audio features, release date, artist IDs | ~600k rows |
+| `data/artists.csv` | Artist followers, genres, artist popularity | ~1.1M rows |
 
-The notebook **downloads them automatically** with `kagglehub` – no manual download. The `data/` folder in this repo holds small samples (`tracks_sample.csv`, `artists_sample.csv`) because the full `tracks.csv` exceeds GitHub's 100 MB file limit. If the Kaggle download fails, the notebook falls back to these samples.
+The notebook **downloads them automatically** with `kagglehub` – no manual download. Git LFS is required to check out the included full CSVs. The notebook also creates small samples (`tracks_sample.csv`, `artists_sample.csv`) in `data/`; if the Kaggle download fails, it falls back to these samples.
 
 ## Methodology (KDD stages)
 1. Problem identification
@@ -38,6 +38,8 @@ The notebook **downloads them automatically** with `kagglehub` – no manual dow
 ├── README.md
 ├── requirements.txt
 ├── data/
+│   ├── tracks.csv                              # full dataset (Git LFS)
+│   ├── artists.csv                             # full dataset (Git LFS)
 │   ├── tracks_sample.csv                       # created by the notebook (Section 12)
 │   └── artists_sample.csv
 └── models/                                     # saved model + result tables
